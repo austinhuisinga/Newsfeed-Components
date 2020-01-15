@@ -112,3 +112,57 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function componentCreator(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+  const articleDiv = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const pOne = document.createElement('p');
+  const pTwo = document.createElement('p');
+  const pThree = document.createElement('p');
+  const expandButton = document.createElement('span');
+
+  articleDiv.classList.add('article');
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articleDate.classList.add('date');
+  pOne.textContent = firstParagraph;
+  pTwo.textContent = secondParagraph;
+  pThree.textContent = thirdParagraph;
+  expandButton.classList.add = ('expandButton')
+
+  articleDiv.appendChild(articleTitle);
+  articleDiv.appendChild(articleDate);
+  articleDiv.appendChild(pOne);
+  articleDiv.appendChild(pTwo);
+  articleDiv.appendChild(pThree);
+  articleDiv.appendChild(expandButton);
+
+  return articleDiv;
+}
+
+
+// function buttonCreator(text){
+//   let button = document.createElement('button');
+
+//   button.textContent = text;
+
+//   button.classList.add('button');
+//   button.classList.add('large-button');
+
+//   button.addEventListener('click', (event) => {
+//     alert(`The button clicked says: ${event.target.textContent}`)
+//   })
+  
+//   return button
+// }
+
+// const button1 = buttonCreator(data[0]);
+
+
+let articlesContainer = document.querySelector('.articles');
+
+const article1 = componentCreator(data[0].title, data[0].date);
+
+articlesContainer.appendChild(article1);
+// articlesContainer.appendChild(button1);

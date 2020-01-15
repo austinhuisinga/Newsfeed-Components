@@ -146,9 +146,16 @@ function articleCreator(data) {
   article.appendChild(pThree);
   article.appendChild(expandButton);
 
+
   expandButton.addEventListener('click', () => {
     article.classList.toggle('article-open');
   })
+
+  // article.forEach(event => {
+  //   event.addEventListener('click', () => {
+  //     event.style.backgroundColor = 'red';
+  //   })
+  // })
 
   return article;
 }
@@ -158,3 +165,16 @@ let container = document.querySelector('.articles');
 data.map((item) => {
   return container.appendChild(articleCreator(item))
 })
+
+
+
+
+
+// article.forEach(event => {
+//   event.addEventListener('mouseenter', () => {
+//     event.style.transform = 'scale(1.2)';
+//   })
+//   event.addEventListener('mouseleave', () => {
+//     event.style.transform = 'scale(1)';
+//   })
+// })

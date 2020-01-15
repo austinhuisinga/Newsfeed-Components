@@ -46,10 +46,21 @@ function menuComponent (menuItems) {
     listItem.textContent = item;
     list.appendChild(listItem);
 
+    listItem.addEventListener('mouseenter', () => {
+      listItem.style.color = 'lightgray';
+      listItem.style.cursor = 'pointer';
+      listItem.style.transform = 'scale(1.05)';
+    })
+    listItem.addEventListener('mouseleave', () => {
+      listItem.style.color = 'white';
+      listItem.style.transform = 'scale(1)';
+    })
+
   })
   menuButton.addEventListener('click', () => {
     menu.classList.toggle('menu--open');
   })
+  
 
   return menu;
 }
@@ -58,5 +69,3 @@ const header = document.querySelector('.header');
 const menuButton = document.querySelector('.menu-button');
 
 header.appendChild(menuComponent(menuItems));
-
-

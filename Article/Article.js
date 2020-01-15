@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'aksldjfalksdnavoinea',
+    date: 'Jan 15th, 2020',
+    firstParagraph: 'aovnaeouvnanblasnblkasnlkbjgoiqwbnwqoiebnoiqw',
+    secondParagraph: 'askdnvoawnvoiwqrnbjrwklgjiowtuioweu824y98fjbnklsm',
+    thirdParagraph: '0101010101010101010001010100101010111101010 10010101010101010101001010101010101001010101010100101'
   }
 ];
 
@@ -113,56 +120,41 @@ const data = [
 
 */
 
-function componentCreator(title, date, firstParagraph, secondParagraph, thirdParagraph) {
-  const articleDiv = document.createElement('div');
-  const articleTitle = document.createElement('h2');
-  const articleDate = document.createElement('p');
+function articleCreator(data) {
+  const article = document.createElement('div');
+  const title = document.createElement('h2');
+  const date = document.createElement('p');
   const pOne = document.createElement('p');
   const pTwo = document.createElement('p');
   const pThree = document.createElement('p');
   const expandButton = document.createElement('span');
 
-  articleDiv.classList.add('article');
-  articleTitle.textContent = title;
-  articleDate.textContent = date;
-  articleDate.classList.add('date');
-  pOne.textContent = firstParagraph;
-  pTwo.textContent = secondParagraph;
-  pThree.textContent = thirdParagraph;
-  expandButton.classList.add = ('expandButton')
+  article.classList.add('article');
+  title.textContent = data.title;
+  date.textContent = data.date;
+  date.classList.add('date');
+  pOne.textContent = data.firstParagraph;
+  pTwo.textContent = data.secondParagraph;
+  pThree.textContent = data.thirdParagraph;
+  expandButton.classList.add('expandButton')
+  expandButton.textContent = 'Expand';
 
-  articleDiv.appendChild(articleTitle);
-  articleDiv.appendChild(articleDate);
-  articleDiv.appendChild(pOne);
-  articleDiv.appendChild(pTwo);
-  articleDiv.appendChild(pThree);
-  articleDiv.appendChild(expandButton);
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(pOne);
+  article.appendChild(pTwo);
+  article.appendChild(pThree);
+  article.appendChild(expandButton);
 
-  return articleDiv;
+  expandButton.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+  })
+
+  return article;
 }
 
+let container = document.querySelector('.articles');
 
-// function buttonCreator(text){
-//   let button = document.createElement('button');
-
-//   button.textContent = text;
-
-//   button.classList.add('button');
-//   button.classList.add('large-button');
-
-//   button.addEventListener('click', (event) => {
-//     alert(`The button clicked says: ${event.target.textContent}`)
-//   })
-  
-//   return button
-// }
-
-// const button1 = buttonCreator(data[0]);
-
-
-let articlesContainer = document.querySelector('.articles');
-
-const article1 = componentCreator(data[0].title, data[0].date);
-
-articlesContainer.appendChild(article1);
-// articlesContainer.appendChild(button1);
+data.map((item) => {
+  return container.appendChild(articleCreator(item))
+})

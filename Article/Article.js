@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'aksldjfalksdnavoinea',
+    date: 'Jan 15th, 2020',
+    firstParagraph: 'aovnaeouvnanblasnblkasnlkbjgoiqwbnwqoiebnoiqw',
+    secondParagraph: 'askdnvoawnvoiwqrnbjrwklgjiowtuioweu824y98fjbnklsm',
+    thirdParagraph: '0101010101010101010001010100101010111101010 10010101010101010101001010101010101001010101010100101'
   }
 ];
 
@@ -112,3 +119,62 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function articleCreator(data) {
+  const article = document.createElement('div');
+  const title = document.createElement('h2');
+  const date = document.createElement('p');
+  const pOne = document.createElement('p');
+  const pTwo = document.createElement('p');
+  const pThree = document.createElement('p');
+  const expandButton = document.createElement('span');
+
+  article.classList.add('article');
+  title.textContent = data.title;
+  date.textContent = data.date;
+  date.classList.add('date');
+  pOne.textContent = data.firstParagraph;
+  pTwo.textContent = data.secondParagraph;
+  pThree.textContent = data.thirdParagraph;
+  expandButton.classList.add('expandButton')
+  expandButton.textContent = 'Expand';
+
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(pOne);
+  article.appendChild(pTwo);
+  article.appendChild(pThree);
+  article.appendChild(expandButton);
+
+
+  expandButton.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+  })
+
+  // article.forEach(event => {
+  //   event.addEventListener('click', () => {
+  //     event.style.backgroundColor = 'red';
+  //   })
+  // })
+
+  return article;
+}
+
+let container = document.querySelector('.articles');
+
+data.map((item) => {
+  return container.appendChild(articleCreator(item))
+})
+
+
+
+
+
+// article.forEach(event => {
+//   event.addEventListener('mouseenter', () => {
+//     event.style.transform = 'scale(1.2)';
+//   })
+//   event.addEventListener('mouseleave', () => {
+//     event.style.transform = 'scale(1)';
+//   })
+// })
